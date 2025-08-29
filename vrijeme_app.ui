@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Vrijeme App</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_central">
+    <item>
+     <widget class="QTabWidget" name="main_tabs">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_trenutno">
+       <attribute name="title">
+        <string>Trenutno</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_trenutno">
+        <item>
+         <widget class="QLabel" name="label_title_current">
+          <property name="text">
+           <string>Trenutno vrijeme</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-weight: 600; font-size: 18px;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="hLayout_city_input">
+          <item>
+           <widget class="QLineEdit" name="city_input">
+            <property name="placeholderText">
+             <string>Unesite grad (npr. Zagreb)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="fetch_button">
+            <property name="text">
+             <string>Dohvati vrijeme</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="grid_current">
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="city_label">
+            <property name="text">
+             <string>Grad, Država</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeft</set>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-size: 16px;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="icon_label">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: transparent;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QVBoxLayout" name="vLayout_stats">
+            <item>
+             <widget class="QLabel" name="temp_label">
+              <property name="text">
+               <string>--.-°C</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font-size: 32px; font-weight: 600;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="desc_label">
+              <property name="text">
+               <string>Opis vremena</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="humidity_label">
+              <property name="text">
+               <string>Vlažnost: --%</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="wind_label">
+              <property name="text">
+               <string>Brzina vjetra: -- m/s</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_prognoza">
+       <attribute name="title">
+        <string>Prognoza</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_prognoza">
+        <item>
+         <widget class="QTableWidget" name="forecast_table">
+          <property name="columnCount">
+           <number>3</number>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>Vrijeme</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Temperatura</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Opis</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="graph_label">
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>180</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="text">
+           <string>Graf promjene temperature</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_postavke">
+       <attribute name="title">
+        <string>Postavke</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_postavke">
+        <item>
+         <layout class="QFormLayout" name="formLayout_settings">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_api_text">
+            <property name="text">
+             <string>OpenWeather API ključ:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="api_key_input">
+            <property name="placeholderText">
+             <string>Unesite API ključ</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_units_text">
+            <property name="text">
+             <string>Jedinice:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="units_combo">
+            <item>
+             <property name="text">
+              <string>Celzijus</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Fahrenheit</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="save_settings_button">
+          <property name="text">
+           <string>Spremi postavke</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_postavke">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
